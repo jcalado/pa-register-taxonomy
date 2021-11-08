@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-11-08 09:27-0300\n"
-"PO-Revision-Date: 2021-11-08 09:32-0300\n"
+"PO-Revision-Date: 2021-11-08 12:01-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: pa-plugin-register-taxonomy.php:25
 msgid "Collections"
-msgstr "Collections"
+msgstr "Colecciones"
 
 #: pa-plugin-register-taxonomy.php:25
 msgid "Collection"
@@ -38,11 +38,11 @@ msgstr "Editorial"
 
 #: pa-plugin-register-taxonomy.php:27
 msgid "Ministries"
-msgstr "Ministerios"
+msgstr "Departamentos"
 
 #: pa-plugin-register-taxonomy.php:27
 msgid "Ministry"
-msgstr "Ministry"
+msgstr "Departamento"
 
 #: pa-plugin-register-taxonomy.php:28
 msgid "Projects"

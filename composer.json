@@ -1,4 +1,9 @@
 {
     "name": "webdsa/pa-plugin-register-taxonomy",
-    "type": "wordpress-plugin"
+    "type": "wordpress-plugin",
+    "autoload": {
+          "files": [
+            "pa-plugin-register-taxonomy.php"
+          ]
+        }
 }

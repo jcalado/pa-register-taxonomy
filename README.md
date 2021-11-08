@@ -1,2 +1,1 @@
 # pa-register-taxonomy
-ss

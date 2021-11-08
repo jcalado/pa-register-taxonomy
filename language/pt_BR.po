@@ -1,0 +1,198 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-11-05 12:05-0300\n"
+"PO-Revision-Date: 2021-11-08 08:44-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e;_x;esc_html__;esc_html_e;esc_html_x;esc_attr__;"
+"esc_attr_e;esc_attr_x\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: assets\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+
+#: pa-plugin-register-taxonomy.php:25
+msgid "Collections"
+msgstr "Coleções"
+
+#: pa-plugin-register-taxonomy.php:25
+msgid "Collection"
+msgstr "Coleção"
+
+#: pa-plugin-register-taxonomy.php:26
+msgid "Editorials"
+msgstr "Editorias"
+
+#: pa-plugin-register-taxonomy.php:26
+msgid "Editorial"
+msgstr "Editoria"
+
+#: pa-plugin-register-taxonomy.php:27
+msgid "Ministries"
+msgstr "Departamentos"
+
+#: pa-plugin-register-taxonomy.php:27
+msgid "Ministry"
+msgstr "Departamento"
+
+#: pa-plugin-register-taxonomy.php:28
+msgid "Projects"
+msgstr "Projetos"
+
+#: pa-plugin-register-taxonomy.php:28
+msgid "Project"
+msgstr "Projeto"
+
+#: pa-plugin-register-taxonomy.php:29
+msgid "Region"
+msgstr "Região"
+
+#: pa-plugin-register-taxonomy.php:29
+msgid "Regions"
+msgstr "Regiões"
+
+#: pa-plugin-register-taxonomy.php:30
+msgid "Regional Headquarters"
+msgstr "Sede Regional"
+
+#: pa-plugin-register-taxonomy.php:31
+msgid "Owner Headquarter"
+msgstr "Sede Proprietária"
+
+#: pa-plugin-register-taxonomy.php:39
+msgid "Search"
+msgstr "Buscar"
+
+#: pa-plugin-register-taxonomy.php:40
+msgid "All itens"
+msgstr "Todos os itens"
+
+#: pa-plugin-register-taxonomy.php:43
+msgid "Edit"
+msgstr "Editar"
+
+#: pa-plugin-register-taxonomy.php:44
+msgid "Update"
+msgstr "Atualizar"
+
+#: pa-plugin-register-taxonomy.php:45
+msgid "Add new"
+msgstr "Adicionar novo"
+
+#: pa-plugin-register-taxonomy.php:46
+msgid "New"
+msgstr "Novo"
+
+#, fuzzy
+#~| msgid "Regions, father"
+#~ msgid ", father"
+#~ msgstr "Regi - Pai"
+
+#~ msgid "Collection, father"
+#~ msgstr "Coleção - Pai"
+
+#~ msgid "Editorial, father"
+#~ msgstr "Editoria - Pai"
+
+#~ msgid "editorial"
+#~ msgstr "editoria"
+
+#~ msgid "Ministry, father"
+#~ msgstr "Departamento - Pai"
+
+#, fuzzy
+#~| msgid "Ministry"
+#~ msgid "ministry"
+#~ msgstr "Departamento"
+
+#~ msgid "Projects, father"
+#~ msgstr "Projetos - Pai"
+
+#~ msgid "project"
+#~ msgstr "Projeto"
+
+#~ msgid "region"
+#~ msgstr "Região"
+
+#, fuzzy
+#~ msgid "Headquarter - Regional"
+#~ msgstr "Sede Regional"
+
+#, fuzzy
+#~ msgid "Headquarter - Regional, father"
+#~ msgstr "Sede Regional - Pai"
+
+#~ msgid "Headquarter - Owner, father"
+#~ msgstr "Sede Proprietária - Pai"
+
+#~ msgid "Adventist videos"
+#~ msgstr "Vídeos adventistas"
+
+#~ msgid "Feature"
+#~ msgstr "Destaque"
+
+#~ msgid "Share:"
+#~ msgstr "Compartilhar:"
+
+#~ msgid "Related video"
+#~ msgstr "Vídeos relacionados"
+
+#~ msgid "Title"
+#~ msgstr "Título"
+
+#~ msgid "Recents"
+#~ msgstr "Recentes"
+
+#~ msgid "Popular"
+#~ msgstr "Populares"
+
+#~ msgid "Videos"
+#~ msgstr "Vídeos"
+
+#~ msgid "Select videos"
+#~ msgstr "Vídeos relacionados"
+
+#~ msgid "Block to show a single video content on feature format."
+#~ msgstr "Bloco para exibir um único vídeo no formato de destaque."
+
+#~ msgid "Block to show videos contents in list format."
+#~ msgstr "Bloco para exibir vídeos no formato de lista."
+
+#~ msgid "There is no headquarter office linked to this post."
+#~ msgstr "Não tem nenhuma Sede Proprietária linkada a este post."
+
+#~ msgid "Video info"
+#~ msgstr "Informação do vídeo"
+
+#~ msgid "Video"
+#~ msgstr "Vídeo"
+
+#~ msgid "Lenght"
+#~ msgstr "Duração"
+
+#~ msgid "It will be get when saving the post."
+#~ msgstr "Será obtido ao salvar o post."
+
+#~ msgid "Mode"
+#~ msgstr "Modo"
+
+#~ msgid "Latest"
+#~ msgstr "Últimos"
+
+#~ msgid "Video select"
+#~ msgstr "Selecionar vídeo"
+
+#~ msgid "Quantity"
+#~ msgstr "Quantidade"
+
+#~ msgid "Featured posts"
+#~ msgstr "Posts em destaque"

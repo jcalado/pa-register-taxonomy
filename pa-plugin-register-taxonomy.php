@@ -4,7 +4,7 @@
  * Plugin Name: Register Taxonomy - Portal Adventista
  * Plugin URI: https://www.adventistas.org
  * Description: Plugin que regista todas as taxonomias necessário para o funcionamento do portal.
- * Version: 1.0
+ * Version: 1.1
  * Author: webdsa
  * Author URI: https://www.adventistas.org"
  **/

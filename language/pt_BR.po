@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-11-05 12:05-0300\n"
-"PO-Revision-Date: 2021-11-08 08:44-0300\n"
+"POT-Creation-Date: 2021-11-08 12:06-0300\n"
+"PO-Revision-Date: 2021-11-08 12:06-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -20,75 +20,79 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 
-#: pa-plugin-register-taxonomy.php:25
+#: pa-plugin-register-taxonomy.php:26
 msgid "Collections"
 msgstr "Coleções"
 
-#: pa-plugin-register-taxonomy.php:25
+#: pa-plugin-register-taxonomy.php:26
 msgid "Collection"
 msgstr "Coleção"
 
-#: pa-plugin-register-taxonomy.php:26
+#: pa-plugin-register-taxonomy.php:27
 msgid "Editorials"
 msgstr "Editorias"
 
-#: pa-plugin-register-taxonomy.php:26
+#: pa-plugin-register-taxonomy.php:27
 msgid "Editorial"
 msgstr "Editoria"
 
-#: pa-plugin-register-taxonomy.php:27
+#: pa-plugin-register-taxonomy.php:28
 msgid "Ministries"
 msgstr "Departamentos"
 
-#: pa-plugin-register-taxonomy.php:27
+#: pa-plugin-register-taxonomy.php:28
 msgid "Ministry"
 msgstr "Departamento"
 
-#: pa-plugin-register-taxonomy.php:28
+#: pa-plugin-register-taxonomy.php:29
 msgid "Projects"
 msgstr "Projetos"
 
-#: pa-plugin-register-taxonomy.php:28
+#: pa-plugin-register-taxonomy.php:29
 msgid "Project"
 msgstr "Projeto"
 
-#: pa-plugin-register-taxonomy.php:29
+#: pa-plugin-register-taxonomy.php:30
 msgid "Region"
 msgstr "Região"
 
-#: pa-plugin-register-taxonomy.php:29
+#: pa-plugin-register-taxonomy.php:30
 msgid "Regions"
 msgstr "Regiões"
 
-#: pa-plugin-register-taxonomy.php:30
+#: pa-plugin-register-taxonomy.php:31
 msgid "Regional Headquarters"
-msgstr "Sede Regional"
+msgstr "Sede Regionais"
 
 #: pa-plugin-register-taxonomy.php:31
+msgid "Regional Headquarter"
+msgstr "Sede Regional"
+
+#: pa-plugin-register-taxonomy.php:32
 msgid "Owner Headquarter"
 msgstr "Sede Proprietária"
 
-#: pa-plugin-register-taxonomy.php:39
+#: pa-plugin-register-taxonomy.php:40
 msgid "Search"
 msgstr "Buscar"
 
-#: pa-plugin-register-taxonomy.php:40
+#: pa-plugin-register-taxonomy.php:41
 msgid "All itens"
 msgstr "Todos os itens"
 
-#: pa-plugin-register-taxonomy.php:43
+#: pa-plugin-register-taxonomy.php:44
 msgid "Edit"
 msgstr "Editar"
 
-#: pa-plugin-register-taxonomy.php:44
+#: pa-plugin-register-taxonomy.php:45
 msgid "Update"
 msgstr "Atualizar"
 
-#: pa-plugin-register-taxonomy.php:45
+#: pa-plugin-register-taxonomy.php:46
 msgid "Add new"
 msgstr "Adicionar novo"
 
-#: pa-plugin-register-taxonomy.php:46
+#: pa-plugin-register-taxonomy.php:47
 msgid "New"
 msgstr "Novo"
 

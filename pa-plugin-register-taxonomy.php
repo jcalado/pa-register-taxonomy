@@ -15,6 +15,7 @@ class PARegisterTax
   public function __construct()
   {
     add_action('after_setup_theme', array($this, 'installRoutines'), 8);
+    add_filter("rest_post_query", array($this, 'filter_rest_post_query'), 10, 2);
   }
 
   function installRoutines()
@@ -65,6 +66,66 @@ class PARegisterTax
 
       register_taxonomy($key, ['post'], $args);
     }
+  }
+
+  function filter_rest_post_query($args, $request)
+  {
+    $params = $request->get_params();
+
+
+    if (isset($params['xtt-pa-owner-tax'])) {
+      $args['tax_query'][] = array(
+        array(
+          'taxonomy' => 'xtt-pa-owner',
+          'field' => 'slug',
+          'terms' => explode(',', $params['xtt-pa-owner-tax']),
+          'include_children' => false
+        )
+      );
+    }
+
+    if (isset($params['xtt-pa-departamentos-tax'])) {
+      $args['tax_query'][] = array(
+        array(
+          'taxonomy' => 'xtt-pa-departamentos',
+          'field' => 'slug',
+          'terms' => explode(',', $params['xtt-pa-departamentos-tax'])
+        )
+      );
+    }
+
+    if (isset($params['xtt-pa-projetos-tax'])) {
+      $args['tax_query'][] = array(
+        array(
+          'taxonomy' => 'xtt-pa-projetos',
+          'field' => 'slug',
+          'terms' => explode(',', $params['xtt-pa-projetos-tax'])
+        )
+      );
+    }
+
+    if (isset($params['xtt-pa-sedes-tax'])) {
+      $args['tax_query'][] = array(
+        array(
+          'taxonomy' => 'xtt-pa-sedes',
+          'field' => 'slug',
+          'terms' => explode(',', $params['xtt-pa-sedes-tax']),
+          'include_children' => false
+        )
+      );
+    }
+
+    if (isset($params['xtt-pa-editorias-tax'])) {
+      $args['tax_query'][] = array(
+        array(
+          'taxonomy' => 'xtt-pa-editorias',
+          'field' => 'slug',
+          'terms' => explode(',', $params['xtt-pa-editorias-tax'])
+        )
+      );
+    }
+
+    return $args;
   }
 }
 

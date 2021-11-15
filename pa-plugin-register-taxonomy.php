@@ -84,43 +84,43 @@ class PARegisterTax
       );
     }
 
-    if (isset($params['pa-departamentos'])) {
+    if (isset($params['pa-departamento'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-departamentos',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-departamentos'])
+          'terms' => explode(',', $params['pa-departamento'])
         )
       );
     }
 
-    if (isset($params['pa-projetos'])) {
+    if (isset($params['pa-projeto'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-projetos',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-projetos'])
+          'terms' => explode(',', $params['pa-projeto'])
         )
       );
     }
 
-    if (isset($params['pa-sedes'])) {
+    if (isset($params['pa-sede'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-sedes',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-sedes']),
+          'terms' => explode(',', $params['pa-sede']),
           'include_children' => false
         )
       );
     }
 
-    if (isset($params['pa-editorias'])) {
+    if (isset($params['pa-editoria'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-editorias',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-editorias'])
+          'terms' => explode(',', $params['pa-editoria'])
         )
       );
     }

@@ -73,54 +73,54 @@ class PARegisterTax
     $params = $request->get_params();
 
 
-    if (isset($params['xtt-pa-owner-tax'])) {
+    if (isset($params['pa-owner'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-owner',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-owner-tax']),
+          'terms' => explode(',', $params['pa-owner']),
           'include_children' => false
         )
       );
     }
 
-    if (isset($params['xtt-pa-departamentos-tax'])) {
+    if (isset($params['pa-departamentos'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-departamentos',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-departamentos-tax'])
+          'terms' => explode(',', $params['pa-departamentos'])
         )
       );
     }
 
-    if (isset($params['xtt-pa-projetos-tax'])) {
+    if (isset($params['pa-projetos'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-projetos',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-projetos-tax'])
+          'terms' => explode(',', $params['pa-projetos'])
         )
       );
     }
 
-    if (isset($params['xtt-pa-sedes-tax'])) {
+    if (isset($params['pa-sedes'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-sedes',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-sedes-tax']),
+          'terms' => explode(',', $params['pa-sedes']),
           'include_children' => false
         )
       );
     }
 
-    if (isset($params['xtt-pa-editorias-tax'])) {
+    if (isset($params['pa-editorias'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-editorias',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-editorias-tax'])
+          'terms' => explode(',', $params['pa-editorias'])
         )
       );
     }

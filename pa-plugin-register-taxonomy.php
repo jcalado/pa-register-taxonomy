@@ -21,7 +21,7 @@ class PARegisterTax
   function installRoutines()
   {
     load_theme_textdomain('webdsa', plugin_dir_path(__FILE__) . 'language/');
-    load_plugin_textdomain('webdsa', plugin_dir_path(__FILE__) . 'language/');
+    load_plugin_textdomain('webdsa', false, plugin_dir_path(__FILE__) . 'language/');
 
     $termos = array(
       'xtt-pa-colecoes'       => [__('Collections', 'webdsa'),            __('Collection', 'webdsa'),           false],

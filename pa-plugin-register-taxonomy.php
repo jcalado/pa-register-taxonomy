@@ -24,13 +24,13 @@ class PARegisterTax
     load_plugin_textdomain('webdsa', plugin_dir_path(__FILE__) . 'language/');
 
     $termos = array(
-      'xtt-pa-colecoes'       => [__('Collections', 'webdsa'),            __('Collection', 'webdsa')],
-      'xtt-pa-editorias'      => [__('Editorials', 'webdsa'),             __('Editorial', 'webdsa')],
-      'xtt-pa-departamentos'  => [__('Ministries', 'webdsa'),             __('Ministry', 'webdsa')],
-      'xtt-pa-projetos'       => [__('Projects', 'webdsa'),               __('Project', 'webdsa')],
-      'xtt-pa-regiao'         => [__('Region', 'webdsa'),                 __('Regions', 'webdsa')],
-      'xtt-pa-sedes'          => [__('Regional Headquarters', 'webdsa'),  __('Regional Headquarter', 'webdsa')],
-      'xtt-pa-owner'          => [__('Owner Headquarter', 'webdsa'),      __('Owner Headquarter', 'webdsa')]
+      'xtt-pa-colecoes'       => [__('Collections', 'webdsa'),            __('Collection', 'webdsa'),           false],
+      'xtt-pa-editorias'      => [__('Editorials', 'webdsa'),             __('Editorial', 'webdsa'),            true],
+      'xtt-pa-departamentos'  => [__('Ministries', 'webdsa'),             __('Ministry', 'webdsa'),             false],
+      'xtt-pa-projetos'       => [__('Projects', 'webdsa'),               __('Project', 'webdsa'),              false],
+      'xtt-pa-regiao'         => [__('Region', 'webdsa'),                 __('Regions', 'webdsa'),              false],
+      'xtt-pa-sedes'          => [__('Regional Headquarters', 'webdsa'),  __('Regional Headquarter', 'webdsa'), true],
+      'xtt-pa-owner'          => [__('Owner Headquarter', 'webdsa'),      __('Owner Headquarter', 'webdsa'),    true]
     );
 
     foreach ($termos as $key => $value) {
@@ -53,7 +53,7 @@ class PARegisterTax
         'hierarchical'        => true, // make it hierarchical (like categories)
         'labels'              => $labels,
         'show_ui'             => true,
-        'show_admin_column'   => true,
+        'show_admin_column'   => $value[2],
         'query_var'           => true,
         'rewrite'             => array('slug' => sanitize_title($value[1])),
         'public'              => true,

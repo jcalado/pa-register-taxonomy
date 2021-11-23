@@ -78,7 +78,7 @@ class PARegisterTax
         array(
           'taxonomy' => 'xtt-pa-owner',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-owner']),
+          'terms' => explode(',', $params['xtt-pa-owner-tax']),
           'include_children' => false
         )
       );
@@ -89,7 +89,7 @@ class PARegisterTax
         array(
           'taxonomy' => 'xtt-pa-departamentos',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-departamento'])
+          'terms' => explode(',', $params['xtt-pa-departamentos-tax'])
         )
       );
     }
@@ -99,7 +99,7 @@ class PARegisterTax
         array(
           'taxonomy' => 'xtt-pa-projetos',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-projeto'])
+          'terms' => explode(',', $params['xtt-pa-projetos-tax'])
         )
       );
     }
@@ -109,7 +109,7 @@ class PARegisterTax
         array(
           'taxonomy' => 'xtt-pa-sedes',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-sede']),
+          'terms' => explode(',', $params['xtt-pa-sedes-tax']),
           'include_children' => false
         )
       );
@@ -120,7 +120,7 @@ class PARegisterTax
         array(
           'taxonomy' => 'xtt-pa-editorias',
           'field' => 'slug',
-          'terms' => explode(',', $params['pa-editoria'])
+          'terms' => explode(',', $params['xtt-pa-editorias-tax'])
         )
       );
     }

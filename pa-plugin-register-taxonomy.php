@@ -31,7 +31,7 @@ class PARegisterTax
       'xtt-pa-regiao'         => [__('Region', 'webdsa'),                 __('Regions', 'webdsa'),              false],
       'xtt-pa-sedes'          => [__('Regional Headquarters', 'webdsa'),  __('Regional Headquarter', 'webdsa'), true],
       'xtt-pa-owner'          => [__('Owner Headquarter', 'webdsa'),      __('Owner Headquarter', 'webdsa'),    true],
-      'xtt-pa-kits'           => [__('Kit', 'webdsa'),                    __('Kits', 'webdsa'),                 false],
+      // 'xtt-pa-kits'           => [__('Kit', 'webdsa'),                    __('Kits', 'webdsa'),                 false],
       'xtt-pa-materiais'      => [__('File type', 'webdsa'),              __('File type', 'webdsa'),            false]
     );
 

@@ -143,7 +143,7 @@ class PARegisterTax
     $term_trash = get_term_meta($term_id, 'term_trash', true);
     $user = wp_get_current_user();
     $roles = ( array ) $user->roles;
-    if(!$term_trash || $roles[0] != 'administrator'){
+    if(!$term_trash || $term_trash && $roles[0] != 'administrator'){
       add_term_meta($term_id, 'term_trash', true);
       die('1');
     }

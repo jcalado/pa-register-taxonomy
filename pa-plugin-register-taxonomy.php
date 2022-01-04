@@ -21,11 +21,18 @@ class PARegisterTax
     add_filter("pre_delete_term", array($this, 'filter_delete_term'), 10, 2);
 
     // Inserindo Filtros de Lixeira e Ativos
-    add_filter("get_terms", array($this, 'filter_get_terms'), 10, 3);
+    add_filter("get_terms", array($this, 'filter_get_terms'), 10, 4);
 
     // Action Restaurar
     add_filter("tag_row_actions", array($this, 'filter_actions'), 10, 2 );
     add_action("admin_init", array($this, 'restore_term'));
+
+    add_action( 'admin_head', function(){
+      echo '<style>#wpbody-content .actions.bulkactions{display:none;}</style>';
+      echo '<style>#wpbody-content .form-field.term-parent-wrap a{display:none;}</style>';
+      echo '<style>#wpbody-content .edit-tag-actions #delete-link{display:none;}</style>';
+
+    });
   }
 
   function installRoutines()
@@ -149,35 +156,35 @@ class PARegisterTax
     }
   }
 
-  function filter_get_terms($terms, $taxnomy){
+  function filter_get_terms($terms, $taxonomy, $query_var, $term_query){
     $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     
     $disableds = 0;
     $enableds = 0;
     
     foreach($terms as $keyt => $term){
-      $term_trash = get_term_meta($term->term_id, 'term_trash', true);
-      if($term_trash){
+      if(!empty($term->meta['term_trash'][0])){
+        $terms[$keyt]->parent = 0;
+
         if(!$_GET['terms_trashed']){
           unset($terms[$keyt]);
         }
         $disableds++;
-
       }else{
         if($_GET['terms_trashed']){
           unset($terms[$keyt]);
         }
         $enableds++;
       }
+      
     }
 
     if(strpos($actual_link,'edit-tags.php?taxonomy=')){
       $actual_link = str_replace('&terms_trashed=true','', $actual_link);
       echo '<a href="'.$actual_link.'" style="position: absolute;margin-top: -30px;">Ativos ('.$enableds.')</a>';
       echo '<a href="'.$actual_link.'&terms_trashed=true" style="position: absolute;margin-top: -30px;margin-left: 100px;">Lixeira ('.$disableds.')</a>';
-      echo '<style>#wpbody .alignleft.actions.bulkactions{display:none;} #wpbody-content .form-field.term-parent-wrap a{display:none;}</style>';
-      
     }
+
 
     return $terms;
   }

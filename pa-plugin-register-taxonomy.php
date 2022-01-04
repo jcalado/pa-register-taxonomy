@@ -16,6 +16,16 @@ class PARegisterTax
   {
     add_action('after_setup_theme', array($this, 'installRoutines'), 8);
     add_filter("rest_post_query", array($this, 'filter_rest_post_query'), 10, 2);
+
+    // Desativar o delete default de terms do WP
+    add_filter("pre_delete_term", array($this, 'filter_delete_term'), 10, 2);
+
+    // Inserindo Filtros de Lixeira e Ativos
+    add_filter("get_terms", array($this, 'filter_get_terms'), 10, 3);
+
+    // Action Restaurar
+    add_filter("tag_row_actions", array($this, 'filter_actions'), 10, 2 );
+    add_action("admin_init", array($this, 'restore_term'));
   }
 
   function installRoutines()
@@ -24,15 +34,13 @@ class PARegisterTax
     load_plugin_textdomain('webdsa', false, plugin_dir_path(__FILE__) . 'language/');
 
     $termos = array(
-      'xtt-pa-colecoes'       => [__('Collections', 'webdsa'),            __('Collection', 'webdsa'),           false],
-      'xtt-pa-editorias'      => [__('Editorials', 'webdsa'),             __('Editorial', 'webdsa'),            true],
-      'xtt-pa-departamentos'  => [__('Ministries', 'webdsa'),             __('Ministry', 'webdsa'),             false],
-      'xtt-pa-projetos'       => [__('Projects', 'webdsa'),               __('Project', 'webdsa'),              false],
-      'xtt-pa-regiao'         => [__('Region', 'webdsa'),                 __('Regions', 'webdsa'),              false],
-      'xtt-pa-sedes'          => [__('Regional Headquarters', 'webdsa'),  __('Regional Headquarter', 'webdsa'), true],
-      'xtt-pa-owner'          => [__('Owner Headquarter', 'webdsa'),      __('Owner Headquarter', 'webdsa'),    true],
-      // 'xtt-pa-kits'           => [__('Kit', 'webdsa'),                    __('Kits', 'webdsa'),                 false],
-      'xtt-pa-materiais'      => [__('File type', 'webdsa'),              __('File type', 'webdsa'),            false]
+      'xtt-pa-colecoes'       => [__('Collections', 'webdsa'),            __('Collection', 'webdsa')],
+      'xtt-pa-editorias'      => [__('Editorials', 'webdsa'),             __('Editorial', 'webdsa')],
+      'xtt-pa-departamentos'  => [__('Ministries', 'webdsa'),             __('Ministry', 'webdsa')],
+      'xtt-pa-projetos'       => [__('Projects', 'webdsa'),               __('Project', 'webdsa')],
+      'xtt-pa-regiao'         => [__('Region', 'webdsa'),                 __('Regions', 'webdsa')],
+      'xtt-pa-sedes'          => [__('Regional Headquarters', 'webdsa'),  __('Regional Headquarter', 'webdsa')],
+      'xtt-pa-owner'          => [__('Owner Headquarter', 'webdsa'),      __('Owner Headquarter', 'webdsa')]
     );
 
     foreach ($termos as $key => $value) {
@@ -55,7 +63,7 @@ class PARegisterTax
         'hierarchical'        => true, // make it hierarchical (like categories)
         'labels'              => $labels,
         'show_ui'             => true,
-        'show_admin_column'   => $value[2],
+        'show_admin_column'   => true,
         'query_var'           => true,
         'rewrite'             => array('slug' => sanitize_title($value[1])),
         'public'              => true,
@@ -75,60 +83,128 @@ class PARegisterTax
     $params = $request->get_params();
 
 
-    if (isset($params['xtt-pa-owner-tax'])) {
+    if (isset($params['pa-owner'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-owner',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-owner-tax']),
+          'terms' => explode(',', $params['pa-owner']),
           'include_children' => false
         )
       );
     }
 
-    if (isset($params['xtt-pa-departamentos-tax'])) {
+    if (isset($params['pa-departamento'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-departamentos',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-departamentos-tax'])
+          'terms' => explode(',', $params['pa-departamento'])
         )
       );
     }
 
-    if (isset($params['xtt-pa-projetos-tax'])) {
+    if (isset($params['pa-projeto'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-projetos',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-projetos-tax'])
+          'terms' => explode(',', $params['pa-projeto'])
         )
       );
     }
 
-    if (isset($params['xtt-pa-sedes-tax'])) {
+    if (isset($params['pa-sede'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-sedes',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-sedes-tax']),
+          'terms' => explode(',', $params['pa-sede']),
           'include_children' => false
         )
       );
     }
 
-    if (isset($params['xtt-pa-editorias-tax'])) {
+    if (isset($params['pa-editoria'])) {
       $args['tax_query'][] = array(
         array(
           'taxonomy' => 'xtt-pa-editorias',
           'field' => 'slug',
-          'terms' => explode(',', $params['xtt-pa-editorias-tax'])
+          'terms' => explode(',', $params['pa-editoria'])
         )
       );
     }
 
     return $args;
   }
+
+  function filter_delete_term($term_id, $taxonomy){
+
+    $term_trash = get_term_meta($term_id, 'term_trash', true);
+    if(!$term_trash){
+      add_term_meta($term_id, 'term_trash', true);
+      die('1');
+    }
+  }
+
+  function filter_get_terms($terms, $taxnomy){
+    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    
+    $disableds = 0;
+    $enableds = 0;
+    
+    foreach($terms as $keyt => $term){
+      $term_trash = get_term_meta($term->term_id, 'term_trash', true);
+      if($term_trash){
+        if(!$_GET['terms_trashed']){
+          unset($terms[$keyt]);
+        }
+        $disableds++;
+
+      }else{
+        if($_GET['terms_trashed']){
+          unset($terms[$keyt]);
+        }
+        $enableds++;
+      }
+    }
+
+    if(strpos($actual_link,'edit-tags.php?taxonomy=')){
+      $actual_link = str_replace('&terms_trashed=true','', $actual_link);
+      echo '<a href="'.$actual_link.'" style="position: absolute;margin-top: -30px;right: 10%;">Ativos ('.$enableds.')</a>';
+      echo '<a href="'.$actual_link.'&terms_trashed=true" style="position: absolute;margin-top: -30px;right: 5%;">Lixeira ('.$disableds.')</a>';
+      echo '<style>#wpbody-content .form-field.term-parent-wrap a{display:none;}</style>';
+      
+    }
+
+    return $terms;
+  }
+
+  function filter_actions($actions, $tag){
+    
+    if($_GET['terms_trashed']){
+      $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      $actual_link = str_replace('&restore_term='.$term_id,'', $actual_link);
+      
+      $term_id = $tag->term_id;
+      $actions['restore'] = '<a href="'.$actual_link.'&restore_term='.$term_id.'">Restaurar</a>';  
+    }else{
+      $actions['delete'] = str_replace('Excluir', 'Lixeira', $actions['delete']);
+    }
+
+    return $actions;
+  }
+
+  function restore_term(){
+    if($_GET['restore_term']){
+      $term_id = $_GET['restore_term'];
+      update_term_meta($term_id, 'term_trash', false);
+      $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      $actual_link = str_replace('&restore_term='.$term_id,'', $actual_link);
+      wp_redirect($actual_link);
+    }
+  }
+
 }
 
 $PARegisterTax = new PARegisterTax();

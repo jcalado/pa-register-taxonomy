@@ -141,7 +141,9 @@ class PARegisterTax
   function filter_delete_term($term_id, $taxonomy){
 
     $term_trash = get_term_meta($term_id, 'term_trash', true);
-    if(!$term_trash){
+    $user = wp_get_current_user();
+    $roles = ( array ) $user->roles;
+    if(!$term_trash || $roles[0] != 'administrator'){
       add_term_meta($term_id, 'term_trash', true);
       die('1');
     }
@@ -171,8 +173,8 @@ class PARegisterTax
 
     if(strpos($actual_link,'edit-tags.php?taxonomy=')){
       $actual_link = str_replace('&terms_trashed=true','', $actual_link);
-      echo '<a href="'.$actual_link.'" style="position: absolute;margin-top: -30px;right: 10%;">Ativos ('.$enableds.')</a>';
-      echo '<a href="'.$actual_link.'&terms_trashed=true" style="position: absolute;margin-top: -30px;right: 5%;">Lixeira ('.$disableds.')</a>';
+      echo '<a href="'.$actual_link.'" style="position: absolute;margin-top: -30px;right: 25%;">Ativos ('.$enableds.')</a>';
+      echo '<a href="'.$actual_link.'&terms_trashed=true" style="position: absolute;margin-top: -30px;right: 20%;">Lixeira ('.$disableds.')</a>';
       echo '<style>#wpbody-content .form-field.term-parent-wrap a{display:none;}</style>';
       
     }

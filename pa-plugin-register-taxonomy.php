@@ -175,7 +175,7 @@ class PARegisterTax
       $actual_link = str_replace('&terms_trashed=true','', $actual_link);
       echo '<a href="'.$actual_link.'" style="position: absolute;margin-top: -30px;right: 25%;">Ativos ('.$enableds.')</a>';
       echo '<a href="'.$actual_link.'&terms_trashed=true" style="position: absolute;margin-top: -30px;right: 20%;">Lixeira ('.$disableds.')</a>';
-      echo '<style>#wpbody-content .form-field.term-parent-wrap a{display:none;}</style>';
+      echo '<style>#wpbody .alignleft.actions.bulkactions{display:none;} #wpbody-content .form-field.term-parent-wrap a{display:none;}</style>';
       
     }
 

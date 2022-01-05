@@ -150,9 +150,10 @@ class PARegisterTax
     $term_trash = get_term_meta($term_id, 'term_trash', true);
     $user = wp_get_current_user();
     $roles = ( array ) $user->roles;
-    if(!$term_trash || $term_trash && $roles[0] != 'administrator'){
+    if(!$term_trash || ($term_trash && $roles[0] != 'administrator')){
       add_term_meta($term_id, 'term_trash', true);
       die('1');
+      wp_die('1');
     }
   }
 
@@ -163,13 +164,14 @@ class PARegisterTax
     $enableds = 0;
     
     foreach($terms as $keyt => $term){
-      if(!empty($term->meta['term_trash'][0])){
+      $term_trash = get_term_meta($term->term_id, 'term_trash', true);
+      if($term_trash){
         $terms[$keyt]->parent = 0;
-
         if(!$_GET['terms_trashed']){
           unset($terms[$keyt]);
         }
         $disableds++;
+        
       }else{
         if($_GET['terms_trashed']){
           unset($terms[$keyt]);

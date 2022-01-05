@@ -158,35 +158,37 @@ class PARegisterTax
   }
 
   function filter_get_terms($terms, $taxonomy, $query_var, $term_query){
-    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    
-    $disableds = 0;
-    $enableds = 0;
-    
-    foreach($terms as $keyt => $term){
-      $term_trash = get_term_meta($term->term_id, 'term_trash', true);
-      if($term_trash){
-        $terms[$keyt]->parent = 0;
-        if(!$_GET['terms_trashed']){
-          unset($terms[$keyt]);
-        }
-        $disableds++;
-        
-      }else{
-        if($_GET['terms_trashed']){
-          unset($terms[$keyt]);
-        }
-        $enableds++;
-      }
+
+    if(!$_GET['tag_ID']){
+      $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       
-    }
+      $disableds = 0;
+      $enableds = 0;
+      
+      foreach($terms as $keyt => $term){
+        $term_trash = get_term_meta($term->term_id, 'term_trash', true);
+        if($term_trash){
+          $terms[$keyt]->parent = 0;
+          if(!$_GET['terms_trashed']){
+            unset($terms[$keyt]);
+          }
+          $disableds++;
+          
+        }else{
+          if($_GET['terms_trashed']){
+            unset($terms[$keyt]);
+          }
+          $enableds++;
+        }
+        
+      }
 
-    if(strpos($actual_link,'edit-tags.php?taxonomy=')){
-      $actual_link = str_replace('&terms_trashed=true','', $actual_link);
-      echo '<a href="'.$actual_link.'" style="position: absolute;margin-top: -30px;">Ativos ('.$enableds.')</a>';
-      echo '<a href="'.$actual_link.'&terms_trashed=true" style="position: absolute;margin-top: -30px;margin-left: 100px;">Lixeira ('.$disableds.')</a>';
+      if(strpos($actual_link,'edit-tags.php?taxonomy=')){
+        $actual_link = str_replace('&terms_trashed=true','', $actual_link);
+        echo '<a href="'.$actual_link.'" style="position: absolute;margin-top: -30px;">Ativos ('.$enableds.')</a>';
+        echo '<a href="'.$actual_link.'&terms_trashed=true" style="position: absolute;margin-top: -30px;margin-left: 100px;">Lixeira ('.$disableds.')</a>';
+      }
     }
-
 
     return $terms;
   }
@@ -209,8 +211,7 @@ class PARegisterTax
   function restore_term(){
     if($_GET['restore_term']){
       $term_id = $_GET['restore_term'];
-      delete_term_meta($term_id, 'term_trash', true);
-      delete_term_meta($term_id, 'term_trash', false);
+      update_term_meta($term_id, 'term_trash', false);
       $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       $actual_link = str_replace('&restore_term='.$term_id,'', $actual_link);
       wp_redirect($actual_link);

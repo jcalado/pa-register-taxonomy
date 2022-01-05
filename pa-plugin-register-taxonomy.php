@@ -209,7 +209,8 @@ class PARegisterTax
   function restore_term(){
     if($_GET['restore_term']){
       $term_id = $_GET['restore_term'];
-      update_term_meta($term_id, 'term_trash', false);
+      delete_term_meta($term_id, 'term_trash', true);
+      delete_term_meta($term_id, 'term_trash', false);
       $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       $actual_link = str_replace('&restore_term='.$term_id,'', $actual_link);
       wp_redirect($actual_link);

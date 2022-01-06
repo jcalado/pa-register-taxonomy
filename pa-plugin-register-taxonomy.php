@@ -28,10 +28,9 @@ class PARegisterTax
     add_action("admin_init", array($this, 'restore_term'));
 
     add_action( 'admin_head', function(){
-      echo '<style>#wpbody-content .actions.bulkactions{display:none;}</style>';
+      echo '<style>.edit-tags-php #wpbody-content .actions.bulkactions{display:none;}</style>';
       echo '<style>#wpbody-content .form-field.term-parent-wrap a{display:none;}</style>';
       echo '<style>#wpbody-content .edit-tag-actions #delete-link{display:none;}</style>';
-
     });
   }
 
@@ -75,10 +74,10 @@ class PARegisterTax
         'rewrite'             => array('slug' => sanitize_title($value[1])),
         'public'              => true,
         'show_in_rest'        => true, // add support for Gutenberg editor
-        'capabilities'        => array(
-          'edit_terms'        => false,
-          'delete_terms'      => false,
-        )
+        // 'capabilities'        => array(
+        //   'edit_terms'        => false,
+        //   'delete_terms'      => false,
+        // )
       );
 
       register_taxonomy($key, ['post'], $args);

@@ -46,7 +46,8 @@ class PARegisterTax
       'xtt-pa-projetos'       => [__('Projects', 'webdsa'),               __('Project', 'webdsa')],
       'xtt-pa-regiao'         => [__('Region', 'webdsa'),                 __('Regions', 'webdsa')],
       'xtt-pa-sedes'          => [__('Regional Headquarters', 'webdsa'),  __('Regional Headquarter', 'webdsa')],
-      'xtt-pa-owner'          => [__('Owner Headquarter', 'webdsa'),      __('Owner Headquarter', 'webdsa')]
+      'xtt-pa-owner'          => [__('Owner Headquarter', 'webdsa'),      __('Owner Headquarter', 'webdsa')],
+      'xtt-pa-materiais'      => [__('File type', 'webdsa'),              __('File type', 'webdsa')]
     );
 
     foreach ($termos as $key => $value) {

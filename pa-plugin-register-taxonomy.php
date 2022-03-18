@@ -4,7 +4,7 @@
  * Plugin Name: Register Taxonomy - Portal Adventista
  * Plugin URI: https://www.adventistas.org
  * Description: Plugin que regista todas as taxonomias necessário para o funcionamento do portal.
- * Version: 1.1
+ * Version: 1.1.1
  * Author: webdsa
  * Author URI: https://www.adventistas.org"
  **/
@@ -70,6 +70,7 @@ class PARegisterTax
         'hierarchical'        => true, // make it hierarchical (like categories)
         'labels'              => $labels,
         'show_ui'             => true,
+        'show_in_menu'        => current_user_can('administrator'),
         'show_admin_column'   => $value[2],
         'query_var'           => true,
         'rewrite'             => array('slug' => sanitize_title($value[1])),

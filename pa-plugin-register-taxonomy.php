@@ -162,25 +162,28 @@ class PARegisterTax
   function filter_get_terms($terms, $taxonomy, $query_var, $term_query)
   {
 
-    if (!$_GET['tag_ID']) {
+    if (!isset($_GET['tag_ID'])) {
       $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
       $disableds = 0;
       $enableds = 0;
 
       foreach ($terms as $keyt => $term) {
-        $term_trash = get_term_meta($term->term_id, 'term_trash', true);
-        if ($term_trash) {
-          $terms[$keyt]->parent = 0;
-          if (!$_GET['terms_trashed']) {
-            unset($terms[$keyt]);
+        if (property_exists($term, 'term_id')) {
+          $term_trash = get_term_meta($term->term_id, 'term_trash', true);
+
+          if ($term_trash) {
+            $terms[$keyt]->parent = 0;
+            if (!isset($_GET['terms_trashed'])) {
+              unset($terms[$keyt]);
+            }
+            $disableds++;
+          } else {
+            if (isset($_GET['terms_trashed'])) {
+              unset($terms[$keyt]);
+            }
+            $enableds++;
           }
-          $disableds++;
-        } else {
-          if ($_GET['terms_trashed']) {
-            unset($terms[$keyt]);
-          }
-          $enableds++;
         }
       }
 
@@ -197,11 +200,12 @@ class PARegisterTax
   function filter_actions($actions, $tag)
   {
 
-    if ($_GET['terms_trashed']) {
+    $term_id = $tag->term_id;
+
+    if (isset($_GET['terms_trashed'])) {
       $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       $actual_link = str_replace('&restore_term=' . $term_id, '', $actual_link);
 
-      $term_id = $tag->term_id;
       $actions['restore'] = '<a href="' . $actual_link . '&restore_term=' . $term_id . '">Restaurar</a>';
     } else {
       $actions['delete'] = str_replace('Excluir', 'Lixeira', $actions['delete']);
@@ -212,7 +216,7 @@ class PARegisterTax
 
   function restore_term()
   {
-    if ($_GET['restore_term']) {
+    if (isset($_GET['restore_term'])) {
       $term_id = $_GET['restore_term'];
       update_term_meta($term_id, 'term_trash', false);
       $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";

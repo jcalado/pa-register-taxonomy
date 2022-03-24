@@ -169,7 +169,7 @@ class PARegisterTax
       $enableds = 0;
 
       foreach ($terms as $keyt => $term) {
-        if (property_exists($term, 'term_id')) {
+        if (isset($term->term_id)) {
           $term_trash = get_term_meta($term->term_id, 'term_trash', true);
 
           if ($term_trash) {

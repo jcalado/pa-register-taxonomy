@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-13 11:10+0100\n"
+"PO-Revision-Date: 2022-10-13 11:15+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: pa-plugin-register-taxonomy.php:43
+msgid "Collections"
+msgstr "Coleções"
+
+#: pa-plugin-register-taxonomy.php:43
+msgid "Collection"
+msgstr "Coleção"
+
+#: pa-plugin-register-taxonomy.php:44
+msgid "Editorials"
+msgstr "Editoriais"
+
+#: pa-plugin-register-taxonomy.php:44
+msgid "Editorial"
+msgstr "Editorial"
+
+#: pa-plugin-register-taxonomy.php:45
+msgid "Ministries"
+msgstr "Departamentos"
+
+#: pa-plugin-register-taxonomy.php:45
+msgid "Ministry"
+msgstr "Departamento"
+
+#: pa-plugin-register-taxonomy.php:46
+msgid "Projects"
+msgstr "Projetos"
+
+#: pa-plugin-register-taxonomy.php:46
+msgid "Project"
+msgstr "Projeto"
+
+#: pa-plugin-register-taxonomy.php:47
+msgid "Region"
+msgstr "Região"
+
+#: pa-plugin-register-taxonomy.php:47
+msgid "Regions"
+msgstr "Regiões"
+
+#: pa-plugin-register-taxonomy.php:48
+msgid "Regional Headquarters"
+msgstr "Sedes Regionais"
+
+#: pa-plugin-register-taxonomy.php:48
+msgid "Regional Headquarter"
+msgstr "Sede Regional"
+
+#: pa-plugin-register-taxonomy.php:49
+msgid "Owner Headquarter"
+msgstr "Sede Principal"
+
+#: pa-plugin-register-taxonomy.php:50
+msgid "File type"
+msgstr "Tipo de ficheiro"
+
+#: pa-plugin-register-taxonomy.php:58
+msgid "Search"
+msgstr "Procurar"
+
+#: pa-plugin-register-taxonomy.php:59
+msgid "All itens"
+msgstr "Todos"
+
+#: pa-plugin-register-taxonomy.php:62
+msgid "Edit"
+msgstr "Editar"
+
+#: pa-plugin-register-taxonomy.php:63
+msgid "Update"
+msgstr "Atualizar"
+
+#: pa-plugin-register-taxonomy.php:64
+msgid "Add new"
+msgstr "Adicionar novo"
+
+#: pa-plugin-register-taxonomy.php:65
+msgid "New"
+msgstr "Novo"
